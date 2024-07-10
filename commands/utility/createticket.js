@@ -14,7 +14,7 @@ module.exports = {
             type: ChannelType.PrivateThread
         });
         await thread.members.add(interaction.user.id);
-        await interaction.reply({ content: `A new ticket has been created. You can view it here <@${thread.id}>`, ephemeral: true })
+        await interaction.reply({ content: `A new ticket has been created. You can view it here <#${thread.id}>`, ephemeral: true })
         console.log(`Created thread: ${interaction}`);
 
     },
