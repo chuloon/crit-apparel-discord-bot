@@ -1,11 +1,11 @@
 import fs from 'fs';
-import Discord from 'discord.js';
+import { Client, Collection, Intents } from 'discord.js';
 import { prefix } from './config.js';
 
-const client = new Discord.Client();
+const client = new Client({ intents: [Intents.FLAG_GUILDS, Intents.GUILD_MESSAGES] });
 
 // get command files
-client.commands = new Discord.Collection();
+client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 // parse command files into the client commands
