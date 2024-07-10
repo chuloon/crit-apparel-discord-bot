@@ -1,8 +1,10 @@
 import fs from 'fs';
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
 import { prefix } from './config.js';
+import { createRequire } from 'module';
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
+const require = createRequire(import.meta.url);
 
 // get command files
 client.commands = new Collection();
