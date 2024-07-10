@@ -12,8 +12,9 @@ module.exports = {
             autoArchiveDuration: ThreadAutoArchiveDuration.OneWeek,
             type: ChannelType.PrivateThread
         });
-
-        console.log(`Created thread: ${JSON.stringify(interaction)}`);
+        await thread.members.add(interaction.user.id);
+        await interaction.reply({ content: "A new ticket has been created", ephemeral: true })
+        console.log(`Created thread: ${interaction}`);
 
     },
 };
