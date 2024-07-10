@@ -33,7 +33,7 @@ module.exports = {
         // const modTeamRoleId = '1255930753016139838';
         const modTeamRoleId = null;
         const reason = interaction.options.getString('reason');
-
+        console.log(reason);
         switch (reason) {
             case 'General Questions':
                 thread.send(`What's your question?`);
