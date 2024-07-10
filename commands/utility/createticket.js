@@ -27,8 +27,9 @@ module.exports = {
             autoArchiveDuration: ThreadAutoArchiveDuration.OneWeek,
             type: ChannelType.PrivateThread
         });
-
+        const modTeamRoleId = '1255930753016139838';
         await thread.members.add(interaction.user.id);
+        await thread.members.add(modTeamRoleId);
         await interaction.reply({ content: `A new ticket has been created. You can view it here <#${thread.id}>`, ephemeral: true })
 
         const reason = interaction.options.getString('reason');
