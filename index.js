@@ -1,9 +1,10 @@
 const fs = require('fs');
-const { Client, REST, GatewayIntentBits, Events, Routes } = require('discord.js');
+const { Client, REST, GatewayIntentBits, Events, Routes, Collection } = require('discord.js');
 const path = require('node:path');
 const { clientId, guildId } = require('./config.json');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+client.commands = new Collection();
 
 const commands = [];
 // Grab all the command folders from the commands directory you created earlier
@@ -49,6 +50,28 @@ const rest = new REST().setToken(process.env.BOT_TOKEN);
 // bot is loaded and ready
 client.once(Events.ClientReady, readyClient => {
     console.log("Crit Apparel Bot online");
+});
+
+client.on(Events.InteractionCreate, async interaction => {
+    if (!interaction.isChatInputCommand()) return;
+
+    const command = interaction.client.commands.get(interaction.commandName);
+
+    if (!command) {
+        console.error(`No command matching ${interaction.commandName} was found.`);
+        return;
+    }
+
+    try {
+        await command.execute(interaction);
+    } catch (error) {
+        console.error(error);
+        if (interaction.replied || interaction.deferred) {
+            await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+        } else {
+            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+        }
+    }
 });
 
 client.login(process.env.BOT_TOKEN);
