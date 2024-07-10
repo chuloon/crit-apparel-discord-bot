@@ -10,12 +10,12 @@ module.exports = {
                 .setDescription('What can we help you with?')
                 .setRequired(true)
                 .addChoices(
+                    { name: 'General Questions', value: 'general_question' },
                     { name: 'Address Change', value: 'address_change' },
                     { name: 'Order Status', value: 'order_status' },
                     { name: 'Incorrect or Damaged Item', value: 'defective_item' },
                     { name: 'Expedited Order Request', value: 'expedited_request' },
-                    { name: 'Product Design Request', value: 'product_design_request' },
-                    { name: 'General Questions', value: 'general_question' },
+                    { name: 'Product Design Request', value: 'product_design_request' }
                 )
         ),
     async execute(interaction) {
@@ -29,7 +29,9 @@ module.exports = {
         });
         await thread.members.add(interaction.user.id);
         await interaction.reply({ content: `A new ticket has been created. You can view it here <#${thread.id}>`, ephemeral: true })
-        console.log(`Created thread: ${interaction}`);
 
+        const modTeamRoleId = '1255930753016139838';
+        const reason = interaction.options.getString('reason');
+        thread.send(`Hey there <@${modTeamRoleId}>! <@${interaction.user.id}> needs some help with a \`${reason}\``)
     },
 };
