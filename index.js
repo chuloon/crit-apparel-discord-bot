@@ -25,7 +25,7 @@ for (const folder of commandFolders) {
     }
 }
 
-const rest = new REST().setToken(token);
+const rest = new REST().setToken(process.env.BOT_TOKEN);
 
 // and deploy your commands!
 (async () => {
