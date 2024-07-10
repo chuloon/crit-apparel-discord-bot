@@ -1,10 +1,8 @@
 import fs from 'fs';
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
 import { prefix } from './config.js';
-import { createRequire } from 'module';
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
-const require = createRequire(import.meta.url);
 
 // get command files
 client.commands = new Collection();
@@ -12,7 +10,8 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 
 // parse command files into the client commands
 commandFiles.forEach(file => {
-    const command = require(`./commands/${file}`);
+    const command = import(`./commands/${file}`);
+    // const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
 })
 
