@@ -23,7 +23,7 @@ module.exports = {
         const channel = await interaction.guild.channels.fetch('1260666089407250516');
         const dateTimeHex = Date.now().toString(16).toUpperCase();
         const thread = await channel.threads.create({
-            name: `#${dateTimeHex}`,
+            name: `#CRIT-${dateTimeHex}`,
             autoArchiveDuration: ThreadAutoArchiveDuration.OneWeek,
             type: ChannelType.PrivateThread
         });
@@ -55,7 +55,7 @@ module.exports = {
                 break;
         }
 
-        thread.send(`For future reference, your ticket number is \`#${dateTimeHex}\``)
+        thread.send(`For future reference, your ticket number is \`#CRIT-${dateTimeHex}\``)
     },
 };
 
