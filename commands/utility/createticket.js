@@ -23,7 +23,7 @@ module.exports = {
         const channel = await interaction.guild.channels.fetch('1260666089407250516');
         const dateTimeHex = Date.now().toString(16).toUpperCase();
         const thread = await channel.threads.create({
-            name: dateTimeHex,
+            name: `#${dateTimeHex}`,
             autoArchiveDuration: ThreadAutoArchiveDuration.OneWeek,
             type: ChannelType.PrivateThread
         });
@@ -33,7 +33,29 @@ module.exports = {
         // const modTeamRoleId = '1255930753016139838';
         const modTeamRoleId = null;
         const reason = interaction.options.getString('reason');
-        thread.send(`Hey there <@&${modTeamRoleId}>! <@${interaction.user.id}> needs some help with a${isVowel(reason[0]) ? 'n' : ''} \`${reason}\`. For future reference, your ticket number is \`#${dateTimeHex}\``)
+
+        switch (reason) {
+            case 'General Questions':
+                thread.send(`What's your question?`);
+                break;
+            case 'Address Change':
+                thread.send(`What's the new address you'd like us to ship your order to?`);
+                break;
+            case 'Order Status':
+                thread.send(`What's the order number you want to get the status of?`)
+                break;
+            case 'Incorrect or Damaged Item':
+                thread.send(`Please describe what's going on with your order.`)
+                break;
+            case 'Expedited Order Request':
+                thread.send(`When do you need your order by? While we can't guarantee anything, we will do what we can!`)
+                break;
+            case 'Product Design Request':
+                thread.send(`What would you like to have made? Please provide any details such as product and artwork you have.`)
+                break;
+        }
+
+        thread.send(`For future reference, your ticket number is \`#${dateTimeHex}\``)
     },
 };
 
