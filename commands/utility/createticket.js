@@ -30,7 +30,8 @@ module.exports = {
         await thread.members.add(interaction.user.id);
         await interaction.reply({ content: `A new ticket has been created. You can view it here <#${thread.id}>`, ephemeral: true })
 
-        const modTeamRoleId = '1255930753016139838';
+        // const modTeamRoleId = '1255930753016139838';
+        const modTeamRoleId = null;
         const reason = interaction.options.getString('reason');
         thread.send(`Hey there <@&${modTeamRoleId}>! <@${interaction.user.id}> needs some help with a \`${reason}\`. For future reference, your ticket number is \`#${dateTimeHex}\``)
     },
