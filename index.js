@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { Client, REST, GatewayIntentBits, Events, Routes } = require('discord.js');
 const path = require('node:path');
+const { clientId, guildId } = require('./config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
