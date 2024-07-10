@@ -1,6 +1,6 @@
 import fs from 'fs';
 import Discord from 'discord.js';
-import { prefix } from './config';
+import { prefix } from './config.js';
 
 const client = new Discord.Client();
 
