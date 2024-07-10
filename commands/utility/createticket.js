@@ -13,6 +13,7 @@ module.exports = {
             type: ChannelType.PrivateThread
         });
 
-        console.log(`Created thread: ${thread.name}`);
+        console.log(`Created thread: ${JSON.stringify(interaction)}`);
+
     },
 };
