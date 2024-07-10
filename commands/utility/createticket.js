@@ -27,11 +27,10 @@ module.exports = {
             autoArchiveDuration: ThreadAutoArchiveDuration.OneWeek,
             type: ChannelType.PrivateThread
         });
+
         await thread.members.add(interaction.user.id);
         await interaction.reply({ content: `A new ticket has been created. You can view it here <#${thread.id}>`, ephemeral: true })
 
-        // const modTeamRoleId = '1255930753016139838';
-        const modTeamRoleId = null;
         const reason = interaction.options.getString('reason');
 
         switch (reason) {
@@ -58,7 +57,3 @@ module.exports = {
         thread.send(`For future reference, your ticket number is \`#C-${dateTimeHex}\``)
     },
 };
-
-function isVowel(letter) {
-    return ['a', 'e', 'i', 'o', 'u'].indexOf(letter.toLowerCase()) !== -1
-}
