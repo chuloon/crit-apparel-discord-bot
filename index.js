@@ -25,9 +25,7 @@ client.on('messageCreate', message => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName);
-    console.log("message", client.commands);
-
-
+    console.log("bool", !client.commands.has(commandName));
     if (!client.commands.has(commandName)) return;
 
     if (message.channel.name === undefined) {
