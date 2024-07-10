@@ -1,10 +1,18 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, ThreadAutoArchiveDuration, ChannelType } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('ping2')
-        .setDescription('Replies with Pong!'),
+        .setName('createticket')
+        .setDescription('Creates a support ticket'),
     async execute(interaction) {
-        await interaction.reply('Pong2!');
+        const channel = interaction.channel;
+
+        const thread = await channel.threads.create({
+            name: 'test',
+            autoArchiveDuration: ThreadAutoArchiveDuration.OneWeek,
+            type: ChannelType.PrivateThread
+        });
+
+        console.log(`Created thread: ${thread.name}`);
     },
 };
