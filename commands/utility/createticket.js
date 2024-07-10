@@ -21,7 +21,7 @@ module.exports = {
     async execute(interaction) {
         // Fetch the #support-tickets channel. 1260666089407250516 is the channel id
         const channel = await interaction.guild.channels.fetch('1260666089407250516');
-        const dateTimeHex = parseInt(Date.now(), 16);
+        const dateTimeHex = Date.now().toString(16);
         const thread = await channel.threads.create({
             name: dateTimeHex,
             autoArchiveDuration: ThreadAutoArchiveDuration.OneWeek,
