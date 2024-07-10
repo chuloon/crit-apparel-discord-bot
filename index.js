@@ -1,16 +1,16 @@
-import fs from 'fs';
-import { Client, Collection, GatewayIntentBits } from 'discord.js';
-import { prefix } from './config.js';
+const fs = require('fs');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const prefix = require('./config.js')
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
 // get command files
 client.commands = new Collection();
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.cjs'));
 
 // parse command files into the client commands
 commandFiles.forEach(file => {
-    const command = import(`./commands/${file}`);
+    const command = require(`./commands/${file}`);
     // const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
 })
@@ -25,7 +25,7 @@ client.on('messageCreate', message => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName);
-    console.log("message", command);
+    console.log("message", client.commands);
 
 
     if (!client.commands.has(commandName)) return;
