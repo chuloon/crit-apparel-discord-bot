@@ -6,7 +6,7 @@ module.exports = {
         .setDescription('Creates a support ticket')
         .addStringOption(option =>
             option
-                .setName('Reason')
+                .setName('reason')
                 .setDescription('What can we help you with?')
                 .setRequired(true)
                 .addChoices(
