@@ -5,7 +5,8 @@ module.exports = {
         .setName('createticket')
         .setDescription('Creates a support ticket'),
     async execute(interaction) {
-        const channel = interaction.channel;
+        // Fetch the #support-tickets channel. 1260666089407250516 is the channel id
+        const channel = await interaction.guild.channels.fetch('1260666089407250516');
 
         const thread = await channel.threads.create({
             name: 'test',
