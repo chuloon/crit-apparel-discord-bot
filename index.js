@@ -1,6 +1,6 @@
 import fs from 'fs';
 import Discord from 'discord.js';
-import { prefix, token } from './config.json';
+import { prefix } from './config.json';
 
 const client = new Discord.Client();
 
