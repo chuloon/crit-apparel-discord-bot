@@ -21,7 +21,7 @@ client.once('ready', () => {
 })
 
 // code to run on message
-client.on('message', message => {
+client.on('messageCreate', message => {
     console.log("message");
     const args = message.content.slice(prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
