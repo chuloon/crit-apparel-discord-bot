@@ -11,7 +11,6 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 // parse command files into the client commands
 commandFiles.forEach(file => {
     const command = require(`./commands/${file}`);
-    // const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
 })
 
@@ -25,8 +24,7 @@ client.on('messageCreate', message => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName);
-    console.log("commandName", commandName);
-    console.log("commands", JSON.stringify(client.commands))
+
     if (!client.commands.has(commandName)) return;
 
     if (message.channel.name === undefined) {
