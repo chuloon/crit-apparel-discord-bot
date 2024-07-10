@@ -2,7 +2,7 @@ import fs from 'fs';
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
 import { prefix } from './config.js';
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
 // get command files
 client.commands = new Collection();
