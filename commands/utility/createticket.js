@@ -28,9 +28,9 @@ module.exports = {
             type: ChannelType.PrivateThread
         });
         const modTeamRoleId = '1255930753016139838';
-        // TODO need to add the mod team to the thread
-        console.log(thread.guild.roles.fetch(modTeamRoleId));
+
         const modMembers = await thread.guild.roles.fetch(modTeamRoleId).members;
+        console.log("modMembers", modMembers);
         modMembers?.forEach(async member => {
             await thread.members.add(member.id);
         });
