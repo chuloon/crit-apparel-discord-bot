@@ -29,7 +29,7 @@ module.exports = {
         });
         const modTeamRoleId = '1255930753016139838';
 
-        const modMembers = await thread.guild.roles.fetch(modTeamRoleId).guild;
+        const modMembers = await thread.guild.roles.fetch(modTeamRoleId);
         console.log(modMembers);
         modMembers?.forEach(async member => {
             await thread.members.add(member.id);
