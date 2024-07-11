@@ -30,7 +30,7 @@ module.exports = {
         const modTeamRoleId = '1255930753016139838';
         // TODO need to add the mod team to the thread
         console.log(thread.guild.roles.fetch(modTeamRoleId));
-        const modMembers = thread.guild.roles.fetch(modTeamRoleId).members;
+        const modMembers = await thread.guild.roles.fetch(modTeamRoleId).members;
         modMembers?.forEach(async member => {
             await thread.members.add(member.id);
         });
