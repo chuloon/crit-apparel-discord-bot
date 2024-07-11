@@ -31,7 +31,7 @@ module.exports = {
 
         const modMembersRole = await thread.guild.roles.fetch(modTeamRoleId);
         const modMembers = modMembersRole.members;
-        console.log(modMembers);
+        console.log(modMembersRole);
         modMembers?.forEach(async member => {
             await thread.members.add(member.id);
         });
