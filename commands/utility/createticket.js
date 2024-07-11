@@ -28,7 +28,11 @@ module.exports = {
             type: ChannelType.PrivateThread
         });
         const modTeamRoleId = '1255930753016139838';
-        await thread.guild.roles.add(modTeamRoleId)
+        // TODO need to add the mod team to the thread
+        const modMembers = thread.guild.roles.fetch(modTeamRoleId).members;
+        modMembers.forEach(async member => {
+            await thread.members.add(member.id);
+        });
         await thread.members.add(interaction.user.id);
         await interaction.reply({ content: `A new ticket has been created. You can view it here <#${thread.id}>`, ephemeral: true })
 
