@@ -29,6 +29,7 @@ module.exports = {
         });
         // TODO Add mod team to private thread
         const modTeamRoleId = '1255930753016139838';
+        console.log(interaction);
         await thread.members.add(interaction.user.id);
         await interaction.reply({ content: `A new ticket has been created. You can view it here <#${thread.id}>`, ephemeral: true })
 
@@ -55,6 +56,6 @@ module.exports = {
                 break;
         }
 
-        thread.send(`Someone from <@&${modTeamRoleId}> will be with you shortly. For your convenience, your ticket number is \`#C-${dateTimeHex}\``)
+        thread.send(`For your convenience, your ticket number is \`#C-${dateTimeHex}\``)
     },
 };
