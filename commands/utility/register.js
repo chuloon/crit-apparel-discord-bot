@@ -34,7 +34,7 @@ module.exports = {
         const alias = interaction.options.getString('alias');
         const org = interaction.options.getString('org');
 
-        const nickname = `${firstName}${alias ? ' "' + alias + '"' : null} ${lastName}${org ? ' - ' + org : null}`
+        const nickname = `${firstName}${alias ? ' "' + alias + '"' : ''} ${lastName}${org ? ' - ' + org : ''}`
 
         await interaction.member.setNickname(nickname);
     }
