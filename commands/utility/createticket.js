@@ -29,7 +29,8 @@ module.exports = {
         });
         // TODO Add mod team to private thread
         const modTeamRoleId = '1255930753016139838';
-        console.log(await interaction.guild.roles.fetch(modTeamRoleId));
+        const modTeamRole = await interaction.guild.roles.fetch(modTeamRoleId);
+        console.log(modTeamRole.members);
         await thread.members.add(interaction.user.id);
         await interaction.reply({ content: `A new ticket has been created. You can view it here <#${thread.id}>`, ephemeral: true })
 
