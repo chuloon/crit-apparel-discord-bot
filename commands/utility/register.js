@@ -26,7 +26,7 @@ module.exports = {
             option
                 .setName('org')
                 .setDescription('Your organization')
-                .setRequired(false)
+                .setRequired(true)
         ),
     async execute(interaction) {
         const firstName = interaction.options.getString('first');
@@ -36,7 +36,6 @@ module.exports = {
 
         const nickname = `${firstName}${alias ? ' "' + alias + '"' : ''} ${lastName}${org ? ' - ' + org : ''}`
         if (nickname.length > 32) {
-            console.log(nickname.length)
             interaction.reply({ content: `Your nickname must be 32 characters or less. Please shorten your nickname by ${nickname.length - 32} characters!`, ephemeral: true })
         }
         else {
