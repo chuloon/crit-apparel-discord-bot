@@ -27,13 +27,8 @@ module.exports = {
             autoArchiveDuration: ThreadAutoArchiveDuration.OneWeek,
             type: ChannelType.PrivateThread
         });
+        // TODO Add mod team to private thread
         const modTeamRoleId = '1255930753016139838';
-
-        const modMembers = await thread.guild.roles.fetch(modTeamRoleId).guild;
-        console.log(modMembers);
-        modMembers?.forEach(async member => {
-            await thread.members.add(member.id);
-        });
         await thread.members.add(interaction.user.id);
         await interaction.reply({ content: `A new ticket has been created. You can view it here <#${thread.id}>`, ephemeral: true })
 
@@ -60,6 +55,6 @@ module.exports = {
                 break;
         }
 
-        thread.send(`For future reference, your ticket number is \`#C-${dateTimeHex}\``)
+        thread.send(`Someone from <@&${modTeamRoleId}> will be with you shortly. For your convenience, your ticket number is \`#C-${dateTimeHex}\``)
     },
 };
