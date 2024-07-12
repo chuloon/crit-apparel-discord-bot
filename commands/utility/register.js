@@ -18,15 +18,15 @@ module.exports = {
         )
         .addStringOption(option =>
             option
-                .setName('alias')
-                .setDescription('Your alias or screen name')
-                .setRequired(false)
-        )
-        .addStringOption(option =>
-            option
                 .setName('org')
                 .setDescription('Your organization')
                 .setRequired(true)
+        )
+        .addStringOption(option =>
+            option
+                .setName('alias')
+                .setDescription('Your alias or screen name')
+                .setRequired(false)
         ),
     async execute(interaction) {
         const firstName = interaction.options.getString('first');
