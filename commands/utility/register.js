@@ -35,8 +35,14 @@ module.exports = {
         const org = interaction.options.getString('org');
 
         const nickname = `${firstName}${alias ? ' "' + alias + '"' : ''} ${lastName}${org ? ' - ' + org : ''}`
+        if (nickname.length > 32) {
+            console.log(nickname.length)
+            interaction.reply({ content: `Your nickname must be 32 characters or less. Please shorten your nickname by ${nickname.length - 32} characters!`, ephemeral: true })
+        }
+        else {
+            await interaction.member.setNickname(nickname);
+            await interaction.reply({ content: 'Thanks for registering! If you need to change anything in the future, just run the \`/register\` command again.', ephemeral: true })
+        }
 
-        await interaction.member.setNickname(nickname);
-        await interaction.reply({ content: 'Thanks for registering! If you need to change anything in the future, just run the \`/register\` command again.', ephemeral: true })
     }
 }
