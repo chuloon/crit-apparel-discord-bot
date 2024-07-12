@@ -37,5 +37,6 @@ module.exports = {
         const nickname = `${firstName}${alias ? ' "' + alias + '"' : ''} ${lastName}${org ? ' - ' + org : ''}`
 
         await interaction.member.setNickname(nickname);
+        await interaction.reply({ content: 'Thanks for registering! If you need to change anything in the future, just run the \`/register\` command again.', ephemeral: true })
     }
 }
