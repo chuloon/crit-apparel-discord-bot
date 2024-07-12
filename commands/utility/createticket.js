@@ -30,7 +30,6 @@ module.exports = {
         // TODO Add mod team to private thread
         const modTeamRoleId = '1255930753016139838';
         const modTeamRole = await interaction.guild.roles.fetch(modTeamRoleId);
-        console.log("members", modTeamRole.members);
         modTeamRole.members?.forEach(member => {
             thread.members.add(member.user.id);
         });
