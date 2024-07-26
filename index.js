@@ -35,7 +35,8 @@ client.once(Events.ClientReady, readyClient => {
     client.user.setPresence({
         activities: [{
             type: ActivityType.Custom,
-            name: "Use /createticket to get started"
+            name: "Use \`/createticket\` to get started",
+            url: "https://critapparel.com/"
         }]
     })
 });
