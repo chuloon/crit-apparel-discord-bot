@@ -24,7 +24,7 @@ module.exports = {
         )
         .addStringOption(option =>
             option
-                .setName('gamer tag')
+                .setName('gamertag')
                 .setDescription('Your alias or screen name')
                 .setRequired(false)
         ),
