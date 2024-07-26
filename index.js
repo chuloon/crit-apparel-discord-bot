@@ -4,14 +4,6 @@ const { Client, Collection, Events, GatewayIntentBits, ActivityType } = require(
 
 const client = new Client(
     {
-        presence: {
-            status: "online",
-            afk: false,
-            actvities: [{
-                name: "Use the \`/createticket\` command to get started",
-                type: ActivityType.Listening
-            }]
-        },
         intents: [
             GatewayIntentBits.Guilds,
             GatewayIntentBits.GuildMembers,
@@ -40,7 +32,12 @@ for (const folder of commandFolders) {
 
 client.once(Events.ClientReady, readyClient => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
-    client.user.setActivity("Use /createticket to get started")
+    client.user.setPresence({
+        activities: [{
+            type: ActivityType.Custom,
+            name: "Use /createticket to get started"
+        }]
+    })
 });
 
 client.on(Events.InteractionCreate, async interaction => {
