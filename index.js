@@ -2,7 +2,23 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, ActivityType } = require('discord.js');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildPresences] });
+const client = new Client(
+    {
+        presence: {
+            status: "online",
+            afk: false,
+            actvities: [{
+                name: "Use the \`/createticket\` command to get started",
+                type: ActivityType.Listening
+            }]
+        },
+        intents: [
+            GatewayIntentBits.Guilds,
+            GatewayIntentBits.GuildMembers,
+            GatewayIntentBits.GuildPresences
+        ]
+    }
+);
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
@@ -46,13 +62,5 @@ client.on(Events.InteractionCreate, async interaction => {
         }
     }
 });
-
-client.user.setPresence({
-    activities: [{
-        name: "Use the \`/createticket\` command to get started",
-        type: ActivityType.Listening
-    }],
-    status: "online"
-})
 
 client.login(process.env.BOT_TOKEN);
