@@ -15,7 +15,7 @@ module.exports = {
             //     { name: "Register yourself", value: "Use the \`/register\` command to set your name in the server so we know who you are. Expected fields: first/last name*, organization*, and gamer tag" }
             // )
             // .setImage("https://cdn.discordapp.com/attachments/1222641546634203186/1260665130945871903/Lime_Letter.png?ex=66a53d65&is=66a3ebe5&hm=189a83638f0c9bcc26583783f83cfd977e16999c524afebda55ba49839271aef&")
-            .setFooter("To play your best, you have to wear the best");
+            .setFooter({ text: 'To play your best, you have to wear the best', iconURL: "https://cdn.discordapp.com/attachments/1222641546634203186/1260665130945871903/Lime_Letter.png?ex=66a53d65&is=66a3ebe5&hm=189a83638f0c9bcc26583783f83cfd977e16999c524afebda55ba49839271aef&" });
 
         await interaction.channel.send({ embeds: [embed] });
     }
