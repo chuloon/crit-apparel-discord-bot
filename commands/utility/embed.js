@@ -7,7 +7,7 @@ module.exports = {
         .setDescription('Creates the channel embed to post helpful messages'),
     async execute(interaction) {
         const embed = new EmbedBuilder()
-            .setColor("#F8FF02")
+            .setColor(0xF8FF02)
             .setTitle("How to use Ticket Critter")
             .setDescription("Create support tickets and more!")
             .addFields(
