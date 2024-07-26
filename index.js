@@ -40,6 +40,7 @@ for (const folder of commandFolders) {
 
 client.once(Events.ClientReady, readyClient => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+    client.user.setActivity("\`/createticket\` to get started", { type: "LISTENING" })
 });
 
 client.on(Events.InteractionCreate, async interaction => {
